@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "844400076179",
+    "project_id": "lab8-pushnotification",
+    "storage_bucket": "lab8-pushnotification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844400076179:android:933f9af7034b76edf9b466",
+        "android_client_info": {
+          "package_name": "com.example.lab8_pushnotification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844400076179-apn56pddmbmpcbnl9pbq520rb1jingtd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSeH8cI3m8qiBi1EEgv3NysPRA4-B69zI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844400076179-apn56pddmbmpcbnl9pbq520rb1jingtd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
