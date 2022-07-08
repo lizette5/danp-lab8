@@ -17,11 +17,13 @@ class MainActivity3 : AppCompatActivity() {
 
         extra?.let {
             val textView = findViewById<TextView>(R.id.textView)
+            textView.text = it
+
             val textView3 = findViewById<TextView>(R.id.textView3)
             textView3.text=textView3.text.toString()
             val imagen = findViewById<ImageView>(R.id.imageView3)
             imagen.setImageResource(R.drawable.planeta)
-            textView.text = it
+
         }
     }
 }

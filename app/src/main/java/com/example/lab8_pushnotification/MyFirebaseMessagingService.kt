@@ -2,8 +2,12 @@ package com.example.lab8_pushnotification
 
 import android.annotation.SuppressLint
 import android.app.*
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Build
+import android.widget.ImageView
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -37,6 +41,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         remoteView.setTextViewText(R.id.titulo, titulo)
         remoteView.setTextViewText(R.id.mensaje, mensaje)
         remoteView.setImageViewResource(R.id.logo, R.drawable.icono)
+        //imagenes de las vistas
+        remoteView.setImageViewResource(R.id.imageView2,R.drawable.informacion)
+        remoteView.setImageViewResource(R.id.imageView3,R.drawable.planeta)
+
         return remoteView
     }
 
@@ -59,8 +67,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         //icono en la notificación
         val myBitmap = R.drawable.tema.createBitmap(this)
-        //canales para el id y nombre
 
+        //canales para el id y nombre
         var builder: NotificationCompat.Builder = NotificationCompat.Builder(
             applicationContext, channelId
         )
@@ -92,5 +100,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         notificationManager.notify(0, builder.build())
 
 
+    }
+    fun Int.createBitmap(context: Context): Bitmap {
+        return BitmapFactory.decodeResource(context.resources, this)
     }
 }

@@ -12,9 +12,6 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        val imagen = findViewById<ImageView>(R.id.imageView2)
-        imagen.visibility
-
         val extra:String?=intent.getStringExtra("EXTRA_ARG")
 
         extra?.let {

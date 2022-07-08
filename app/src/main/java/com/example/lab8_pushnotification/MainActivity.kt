@@ -3,6 +3,8 @@ package com.example.lab8_pushnotification
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -29,7 +31,8 @@ class MainActivity : AppCompatActivity() {
         createNotification()
         buildNotificationStyle5()
 
-        //automaticamente
+        // La campanita
+        //automaticamente cuando presiona la notificacion se abre la pantalla principal
         val intent = Intent(this, MainActivity::class.java)
         val pendingIntent: PendingIntent? = TaskStackBuilder.create(this).run {
             addNextIntentWithParentStack(intent)
@@ -38,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 PendingIntent.FLAG_UPDATE_CURRENT
             )
         }
-        //primer boton manual
+        //primer boton previus manual
         val buttonIntent = Intent(this, MainActivity2::class.java)
         buttonIntent.putExtra("EXTRA_ARG", "Boton PREVIOUS presionado")
 
@@ -54,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             "PREVIUS",
             buttonPending
         ).build()
-       //segundo boton  manual
+       //segundo boton  next manual
         val buttonIntent2 = Intent(this, MainActivity3::class.java)
         buttonIntent2.putExtra("EXTRA_ARG", "Boton NEXT  presionado")
 
@@ -71,6 +74,7 @@ class MainActivity : AppCompatActivity() {
             buttonPending2
         ).build()
 
+        //notificacion manual (campanita) que si funciona los  botones
         val notification: Notification = NotificationCompat.Builder(
             applicationContext, channelId
         ).also {
@@ -99,6 +103,11 @@ class MainActivity : AppCompatActivity() {
             notificationManager.notify(notificacionId2,notificationCustom2 )
         }
     }
+
+
+
+    // La bocina
+    //notificacion con imagen creada manualmente (bocina )
     private fun buildNotificationStyle5(){
         val myBitmap = R.drawable.tema.createBitmap(this)
         val intent = Intent()
@@ -123,6 +132,7 @@ class MainActivity : AppCompatActivity() {
         }.build()
     }
 
+    //ambas notificaiones
     private fun createNotification() {
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
             val importance =NotificationManager.IMPORTANCE_HIGH
@@ -136,5 +146,8 @@ class MainActivity : AppCompatActivity() {
             manager.createNotificationChannel(channel)
         }
 
+    }
+    fun Int.createBitmap(context: Context): Bitmap {
+        return BitmapFactory.decodeResource(context.resources, this)
     }
 }
