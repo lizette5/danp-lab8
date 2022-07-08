@@ -57,6 +57,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         val pendingIntent3 = PendingIntent.getActivity(this, 2, intent3, PendingIntent.FLAG_UPDATE_CURRENT)
 
+        //icono en la notificación
+        val myBitmap = R.drawable.tema.createBitmap(this)
         //canales para el id y nombre
 
         var builder: NotificationCompat.Builder = NotificationCompat.Builder(
@@ -76,6 +78,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 androidx.media.app.NotificationCompat.MediaStyle()
                     .setShowActionsInCompactView()
             )
+            .setLargeIcon(myBitmap)
         builder.build()
         builder = builder.setContent(getRemoteView(titulo, mensaje))
 

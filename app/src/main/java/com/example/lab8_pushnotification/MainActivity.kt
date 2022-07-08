@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     val notificacionId=0
     val notificacionId2=1
     private lateinit var notificationCustom2: Notification
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

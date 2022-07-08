@@ -1,19 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DFFBBD">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="290dp"
-        android:layout_height="171dp"
+        android:layout_width="284dp"
+        android:layout_height="66dp"
         android:layout_marginTop="50dp"
-        android:text="Vista 3"
+        android:gravity="center"
+        android:text="El planeta"
         android:textColor="#020202"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="322dp"
+        android:layout_height="275dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:srcCompat="@drawable/planeta" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="El planeta nos recuerda continuamente, y cada vez de forma más recurrente, que si alteramos su equilibrio, las consecuencias son devastadoras a través de sequías, mega incendios, inundaciones, pérdida de la biodiversidad  y desastres naturales cada vez más feroces. El cambio climático ya es una realidad y miles de personas, animales y plantas sufren sus efectos. La contaminación no es más que un aliciente que hace que la crisis climática avance sin control. Nos referimos a contaminación ambiental al ingreso de sustancias químicas nocivas en un entorno determinado. Este fenómeno repercute en el equilibrio de dicho entorno y lo convierte en un ambiente inseguro. El medio ambiente y sus ecosistemas sufren de manera directa los perjudiciales efectos.  Y es que la contaminación ambiental es una alternación negativa del estado natural de los seres vivos que habitan el planeta.  Las causas de este tipo de contaminación dependen de varios agentes que varían según el ecosistema al que afecten."
+        android:textColor="#0E0E0E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.517" />
 </androidx.constraintlayout.widget.ConstraintLayout>
