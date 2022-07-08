@@ -21,8 +21,10 @@ class MainActivity : AppCompatActivity() {
     }
     val channelId = "notificaion_chanel"
     val channelName = " notification_name"
+
     val notificacionId=0
     val notificacionId2=1
+
     private lateinit var notificationCustom2: Notification
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         )
         val action = NotificationCompat.Action.Builder(
-            android.R.drawable.ic_media_previous,
+            android.R.drawable.ic_media_rew,
             "PREVIUS",
             buttonPending
         ).build()
@@ -69,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
         )
         val action2 = NotificationCompat.Action.Builder(
-            android.R.drawable.ic_media_next,
+            android.R.drawable.ic_media_ff,
             "NEXT",
             buttonPending2
         ).build()
@@ -86,9 +88,6 @@ class MainActivity : AppCompatActivity() {
             it.setContentIntent(pendingIntent)
             it.addAction(action)
             it.addAction(action2)
-            it.setStyle(
-                    androidx.media.app.NotificationCompat.MediaStyle()
-                        .setShowActionsInCompactView())
             it.setVibrate(longArrayOf(1000, 1000, 1000, 1000))
             it.setOnlyAlertOnce(true)
         }.build()

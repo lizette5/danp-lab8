@@ -1,16 +1,16 @@
 package com.example.lab8_pushnotification
 
 import android.annotation.SuppressLint
-import android.app.*
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
-import android.widget.ImageView
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -19,7 +19,7 @@ const val channelName = " com.example.lab8_pushnotification"
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     companion object {
-        const val INTENT_REQUEST=0
+        const val INTENT_REQUEST = 0
         const val INTENT_BUTTON = 1
     }
     //generando la notificacion
@@ -42,8 +42,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         remoteView.setTextViewText(R.id.mensaje, mensaje)
         remoteView.setImageViewResource(R.id.logo, R.drawable.icono)
         //imagenes de las vistas
-        remoteView.setImageViewResource(R.id.imageView2,R.drawable.informacion)
-        remoteView.setImageViewResource(R.id.imageView3,R.drawable.planeta)
+        remoteView.setImageViewResource(R.id.imageView2, R.drawable.informacion)
+        remoteView.setImageViewResource(R.id.imageView3, R.drawable.planeta)
 
         return remoteView
     }
@@ -59,11 +59,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val intent3 = Intent(this, MainActivity3::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent =
+            PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-        val pendingIntent2 = PendingIntent.getActivity(this, 1, intent2, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent2 =
+            PendingIntent.getActivity(this, 1, intent2, PendingIntent.FLAG_UPDATE_CURRENT)
 
-        val pendingIntent3 = PendingIntent.getActivity(this, 2, intent3, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent3 =
+            PendingIntent.getActivity(this, 2, intent3, PendingIntent.FLAG_UPDATE_CURRENT)
 
         //icono en la notificación
         val myBitmap = R.drawable.tema.createBitmap(this)
@@ -80,13 +83,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             .setVibrate(longArrayOf(1000, 1000, 1000, 1000))
             .setOnlyAlertOnce(true)
             .setContentIntent(pendingIntent)
-            .addAction(R.drawable.ic_previous,"PREVIUS",pendingIntent2)
-            .addAction(R.drawable.ic_next,"NEXT",pendingIntent3)
+            .addAction(R.drawable.ic_previous, "PREVIUS", pendingIntent2)
+            .addAction(R.drawable.ic_next, "NEXT", pendingIntent3)
             .setStyle(
                 androidx.media.app.NotificationCompat.MediaStyle()
                     .setShowActionsInCompactView()
             )
-            .setLargeIcon(myBitmap)
         builder.build()
         builder = builder.setContent(getRemoteView(titulo, mensaje))
 
@@ -101,6 +103,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 
     }
+
     fun Int.createBitmap(context: Context): Bitmap {
         return BitmapFactory.decodeResource(context.resources, this)
     }
